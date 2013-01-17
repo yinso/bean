@@ -32,7 +32,7 @@ You can perform any legal coffeescript logic as long as the end result
 is a JSON object.
 
 This is best used for managing configuration files, such as
-package.json.  Just take a look at this module's [package.bean](./package.bean) for
+package.json.  Just take a look at this module's [package.bean](./bean/package.bean) for
 inspiration.
 
 LICENSE
