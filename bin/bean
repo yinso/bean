@@ -1,0 +1,46 @@
+#!/usr/bin/env coffee # -*- coffee -*- -p
+
+argv = require('optimist')
+  .demand('source')
+  .alias('source', 's')
+  .default('source', './package.bean')
+  .usage('bean --source [file.coffee|file.bean]')
+  .argv
+
+fs = require 'fs'
+path = require 'path'
+coffee = require 'coffee-script'
+
+source = argv.source
+
+compile = (data) ->
+  try
+    evaled = coffee.eval(data)
+    result = null
+    if evaled instanceof Function
+      result = JSON.stringify(evaled(), null, 2)
+    else
+      result = JSON.stringify(evaled, null, 2)
+    result
+  catch err
+    console.error {error: err}
+    throw error: err
+
+main = (source) ->
+  filePath = path.join process.cwd(), source
+  targetPath = path.join path.dirname(filePath), path.basename(filePath, path.extname(filePath)) + '.json'
+  fs.readFile filePath, (err, data) ->
+    if err
+      console.error {error: err}
+    else
+      try 
+        fs.writeFile targetPath, compile(data.toString()), (err) ->
+          if err
+            console.error err
+          else
+            console.log "saved to #{targetPath}"
+      catch e
+        console.error err
+
+main argv.source
+

@@ -1,0 +1,22 @@
+{
+  "name": "bean",
+  "description": "Writing JSON in coffee-script format",
+  "version": "0.1.0",
+  "bin": {
+    "bean": "./bin/bean"
+  },
+  "scripts": {
+    "test": "make test",
+    "install": "make",
+    "prepublish": "make"
+  },
+  "dependencies": {
+    "optimist": "=0.3.1",
+    "coffee-script": "=1.4.0",
+    "chai": "=1.4.2",
+    "underscore": "=1.3.1"
+  },
+  "devDependencies": {
+    "mocha": "=1.7.3"
+  }
+}
