@@ -17,7 +17,7 @@ objects: $(COFFEE_OBJECTS) package.json
 
 .PHONY: test
 test: build
-	./node_modules/.bin/mocha --compilers coffee:coffee-script --reporter spec
+	./node_modules/.bin/mocha --compilers coffee:coffee-script --reporter spec --ignore-leaks
 
 
 .PHONY: clean

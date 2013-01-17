@@ -1,13 +1,14 @@
 {
-  "name": "bean",
+  "name": "coffee-bean",
+  "author": "YC <yinso.chen@gmail.com>",
   "description": "Writing JSON in coffee-script format",
   "version": "0.1.0",
+  "perferGlobal": true,
   "bin": {
     "bean": "./bin/bean"
   },
   "scripts": {
     "test": "make test",
-    "install": "make",
     "prepublish": "make"
   },
   "dependencies": {
@@ -18,5 +19,13 @@
   },
   "devDependencies": {
     "mocha": "=1.7.3"
-  }
+  },
+  "license": "MIT",
+  "keywords": [
+    "package.json",
+    "configuration",
+    "coffee",
+    "bean",
+    "script"
+  ]
 }

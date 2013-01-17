@@ -1,24 +1,21 @@
-# -*- coffee -*- -p
+# -*- coffee -*- -p # emacs mode binding
 
-# even keeping the whole thing into a function...
-runMe = () ->
-  name = 'bean' # variables are fine.
-  name: name
-  description: 'Writing JSON in coffee-script format'
-  version: '0.1.0'
-  bin:
-    bean: "./bin/#{name}" # interpolation works.
-  scripts:
-    test: (() -> 'make test')() # even running a function.
-    install: 'make'
-    prepublish: 'make'
-  dependencies:
-    optimist: '=0.3.1'
-    'coffee-script': '=1.4.0'
-    chai: '=1.4.2'
-    underscore: '=1.3.1'
-  devDependencies:
-    mocha: '=1.7.3'
-
-
-runMe()
+name: 'coffee-bean'
+author: 'YC <yinso.chen@gmail.com>'
+description: 'Writing JSON in coffee-script format'
+version: '0.1.0'
+perferGlobal: true
+bin:
+  bean: "./bin/bean" # interpolation works.
+scripts:
+  test: (() -> 'make test')() # even running a function.
+  prepublish: 'make'
+dependencies:
+  optimist: '=0.3.1'
+  'coffee-script': '=1.4.0'
+  chai: '=1.4.2'
+  underscore: '=1.3.1'
+devDependencies:
+  mocha: '=1.7.3'
+license: 'MIT'
+keywords: ['package.json', 'configuration', 'coffee', 'bean', 'script']

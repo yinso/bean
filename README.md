@@ -3,6 +3,11 @@ bean
 
 An utility to generate JSON file from a coffee-script.
 
+Installation
+---------
+
+    $ npm install -g coffee-bean
+
 Usage
 -----
 
@@ -27,5 +32,5 @@ You can perform any legal coffeescript logic as long as the end result
 is a JSON object.
 
 This is best used for managing configuration files, such as
-package.json.  Just take a look at this module's package.json for
+package.json.  Just take a look at this module's [package.bean](package.bean) for
 inspiration.
