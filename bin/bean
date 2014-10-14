@@ -4,7 +4,7 @@ argv = require('optimist')
   .demand('source')
   .alias('source', 's')
   .default('source', './package.bean')
-  .usage('bean --source [file.coffee|file.bean]')
+  .usage('bean --source [file.coffee|file.bean|file.yml|file.yaml]')
   .argv
 {run} = require '../src/bean'
 

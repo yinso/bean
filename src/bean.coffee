@@ -2,16 +2,39 @@
 fs = require 'fs'
 path = require 'path'
 coffee = require 'coffee-script'
+jsyaml = require 'js-yaml'
 
-compile = (data) ->
+readFile = (filePath, cb) ->
+  fs.readFile filePath, 'utf8', (err, data) ->
+    if err
+      cb err
+    else
+      try
+        cb null, compile(data)
+      catch e
+        cb e
+
+compile = (filePath, data) ->
+  ext = path.extname(filePath)
+  if ext == '.yml' or ext == '.yaml'
+    compileYaml data
+  else
+    compileCoffee data 
+
+compileYaml = (data) ->
+  try
+    jsyaml.safeLoad(data)
+  catch e
+    console.error {error: e}
+    throw error: e
+
+compileCoffee = (data) ->  
   try
     evaled = coffee.eval(data)
-    result = null
     if evaled instanceof Function
-      result = JSON.stringify(evaled(), null, 2)
+      evaled()
     else
-      result = JSON.stringify(evaled, null, 2)
-    result
+      evaled
   catch err
     console.error {error: err}
     throw error: err
@@ -36,7 +59,7 @@ main = ({source, noTarget}, cb) ->
       cb {error: err}
     else
       try
-        result = compile(data.toString())
+        result = JSON.stringify(compile(filePath, data.toString()), null, 2)
         if noTarget
           cb null, result
         else
@@ -53,3 +76,5 @@ main = ({source, noTarget}, cb) ->
 
 module.exports =
   run: main
+  readFile: readFile
+  compile: compile

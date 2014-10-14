@@ -1,7 +1,7 @@
 bean
 ====
 
-An utility to generate JSON file from a coffee-script.
+An utility to generate JSON file from a coffee-script as well as yaml.
 
 Installation
 ---------
@@ -11,7 +11,7 @@ Installation
 Usage
 -----
 
-    $ bean [-s file.bean|file.coffee]
+    $ bean [-s file.bean|file.coffee|file.yml|file.yaml]
     # file.json will be generated
 
 Motivation
@@ -34,6 +34,8 @@ is a JSON object.
 This is best used for managing configuration files, such as
 package.json.  Just take a look at this module's [package.bean](./bean/package.bean) for
 inspiration.
+
+YAML is also now supported. 
 
 LICENSE
 ------

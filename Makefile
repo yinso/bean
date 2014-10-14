@@ -9,7 +9,7 @@ all: build
 .PHONY: build
 build: node_modules objects 
 
-package.json: package.bean
+package.json: package.bean $(COFFEE_OBJECTS)
 	./bin/bean
 
 .PHONY: objects
