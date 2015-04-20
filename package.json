@@ -2,14 +2,13 @@
   "name": "coffee-bean",
   "author": "YC <yinso.chen@gmail.com>",
   "description": "Writing JSON in coffee-script format",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "perferGlobal": true,
   "bin": {
     "bean": "./bin/bean"
   },
   "main": "./lib/bean",
   "scripts": {
-    "test": "make test",
     "prepublish": "make"
   },
   "dependencies": {
