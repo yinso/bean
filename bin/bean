@@ -1,4 +1,4 @@
-#!/usr/bin/env coffee # -*- coffee -*- -p
+#!/usr/bin/env coffee 
 
 argv = require('optimist')
   .demand('source')

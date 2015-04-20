@@ -10,9 +10,14 @@ readFile = (filePath, cb) ->
       cb err
     else
       try
-        cb null, compile(data)
+        cb null, compile(filePath, data)
       catch e
         cb e
+
+readFileSync = (filePath) ->
+  data = fs.readFileSync filePath, 'utf8'
+  config = compile filePath, data
+  config
 
 compile = (filePath, data) ->
   ext = path.extname(filePath)
@@ -77,4 +82,5 @@ main = ({source, noTarget}, cb) ->
 module.exports =
   run: main
   readFile: readFile
+  readFileSync: readFileSync
   compile: compile
