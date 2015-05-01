@@ -4,6 +4,22 @@ path = require 'path'
 coffee = require 'coffee-script'
 jsyaml = require 'js-yaml'
 
+cache = {}
+
+loadFile = (filePath, cb) ->
+  fs.stat filePath, (err, stat) ->
+    if err 
+      cb err
+    else if cache.hasOwnProperty(filePath) and cache[filePath].mtime >= stat.mtime
+      cb null, cache[filePath].data
+    else
+      readFile filePath, (err, data) ->
+        if err 
+          cb err
+        else
+          cache[filePath] = { data: data , mtime: stat.mtime }
+          cb null, data
+
 readFile = (filePath, cb) ->
   fs.readFile filePath, 'utf8', (err, data) ->
     if err
@@ -81,6 +97,7 @@ main = ({source, noTarget}, cb) ->
 
 module.exports =
   run: main
+  loadFile: loadFile
   readFile: readFile
   readFileSync: readFileSync
   compile: compile

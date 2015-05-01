@@ -10,7 +10,7 @@ all: build
 build: node_modules objects 
 
 package.json: package.yml $(COFFEE_OBJECTS)
-	./bin/bean
+	./bin/bean -s $<
 
 .PHONY: objects
 objects: $(COFFEE_OBJECTS) package.json

@@ -1,0 +1,12 @@
+.monitor
+.DS_Store*
+*~
+/node_modules
+[Tt]humbs.db
+/public
+/public/js
+/public/videos
+/log
+repos/
+.sass-cache/
+css/*.css
